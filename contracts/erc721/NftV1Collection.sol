@@ -1,0 +1,53 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract NftV1Collection is ERC721URIStorage, Ownable {
+
+    uint256 private _tokenId = 0;
+
+    event Mint();
+
+    constructor(address initialOwner, string memory name, string memory symbol) ERC721(name, symbol) Ownable(initialOwner) {
+    }
+
+    function mint(address to, string memory metadataUrl) external onlyOwner{
+        _mint(to, metadataUrl);
+        emit Mint();
+    }
+
+    function mint(address[] memory to, string[] memory metadataUrl) external onlyOwner{
+        require(to.length == metadataUrl.length);
+        
+        for(uint256 i = 0; i < to.length; i++) {
+           _mint(to[i], metadataUrl[i]);
+        }
+        emit Mint();
+    }
+
+    function mint(address[] memory to, string memory metadataUrl) external onlyOwner{
+        for(uint256 i = 0; i < to.length; i++) {
+           _mint(to[i], metadataUrl);
+        }
+        emit Mint();
+    }
+
+    function _mint(address to, string memory metadataUrl) internal onlyOwner{
+        uint256 tokenId = _tokenId++;
+        _mint(to, tokenId);
+        _setTokenURI(tokenId, metadataUrl);
+    }
+
+    function setUrl(uint256 tokenId, string memory metadataUrl) external onlyOwner{
+        _setTokenURI(tokenId, metadataUrl);
+    }
+
+    function exchangeNewToken(address to, uint256 tokenId, string memory metadataUrl) external onlyOwner {
+        require(ownerOf(tokenId) == to);
+        _burn(tokenId);
+        _mint(to, metadataUrl);
+    }
+}
