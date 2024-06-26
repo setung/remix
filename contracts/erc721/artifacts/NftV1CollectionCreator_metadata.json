@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.22+commit.4fc1097e"
+		"version": "0.8.26+commit.8a97fa7a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -159,7 +159,7 @@
 		"compilationTarget": {
 			"contracts/erc721/MsNftV1CollectionCreator.sol": "NftV1CollectionCreator"
 		},
-		"evmVersion": "shanghai",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -299,12 +299,20 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/erc721/MsNftV1Collection.sol": {
-			"keccak256": "0xb1625522ca03ccb7f5e672cf79ae8395872be754b090fef115f21cadcf4c7578",
+		"contracts/erc721/MsERC721.sol": {
+			"keccak256": "0x30d560f9323d53a27b20f8ba05799d50db34838fd351767a6c31d192df0b44ec",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ab16c74602a75d2f1c129ff1963ef54c087d01ac64c1740b7876480d8074ffca",
-				"dweb:/ipfs/Qme4Wj4DnKLLFDN6XRRXqbWQrfVWSTSphpEiwfaCUimsjK"
+				"bzz-raw://450d61e713e3d55848027db873c5394b4c4bec1745665e8b958156e18cb1e66a",
+				"dweb:/ipfs/QmYDhFRDuWHgjdzcda9Mo6QJteE4HwSNnkmJvj4m6Hu4j5"
+			]
+		},
+		"contracts/erc721/MsNftV1Collection.sol": {
+			"keccak256": "0x9bb8af9310b4cdb6b11c345586593eb9f46b91d4c5b7aa64c0d48fcb7d12f2f0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://182cdbcae6383a6f9790b6b679257bba1ee3d507078c8c1cd03ad0a045d0a476",
+				"dweb:/ipfs/QmNvtMeza3BMFMRDL2dHaTPCLFy2PNvoLbskLSGzz5rdS5"
 			]
 		},
 		"contracts/erc721/MsNftV1CollectionCreator.sol": {

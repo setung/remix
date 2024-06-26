@@ -15,7 +15,7 @@ contract MsNftV1Collection is MsERC721, Ownable {
     constructor(address initialOwner, string memory name, string memory symbol) MsERC721(name, symbol) Ownable(initialOwner) {
     }
 
-    function mint(address to, string memory metadataUrl) external onlyOwner{
+    function mint(address to, string memory metadataUrl) public onlyOwner{
         _mint(to, metadataUrl);
         emit Mint();
     }

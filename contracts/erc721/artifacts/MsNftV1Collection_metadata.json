@@ -323,6 +323,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "to",
 						"type": "address"
@@ -357,6 +370,25 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTransferable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -574,8 +606,32 @@
 						"type": "string"
 					}
 				],
-				"name": "setUrl",
+				"name": "setTokenURI",
 				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_transferable",
+						"type": "bool"
+					}
+				],
+				"name": "setTransferable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -767,49 +823,46 @@
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
-					"details": "See {IERC721-approve}."
+					"details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
 				},
 				"balanceOf(address)": {
-					"details": "See {IERC721-balanceOf}."
+					"details": "Returns the number of tokens in ``owner``'s account."
 				},
 				"getApproved(uint256)": {
-					"details": "See {IERC721-getApproved}."
+					"details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
 				},
 				"isApprovedForAll(address,address)": {
-					"details": "See {IERC721-isApprovedForAll}."
+					"details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}"
 				},
 				"name()": {
-					"details": "See {IERC721Metadata-name}."
+					"details": "Returns the token collection name."
 				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
 				"ownerOf(uint256)": {
-					"details": "See {IERC721-ownerOf}."
+					"details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
 				"safeTransferFrom(address,address,uint256)": {
-					"details": "See {IERC721-safeTransferFrom}."
+					"details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must have been allowed to move this token by either {approve} or   {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon   a safe transfer. Emits a {Transfer} event."
 				},
 				"safeTransferFrom(address,address,uint256,bytes)": {
-					"details": "See {IERC721-safeTransferFrom}."
+					"details": "Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon   a safe transfer. Emits a {Transfer} event."
 				},
 				"setApprovalForAll(address,bool)": {
-					"details": "See {IERC721-setApprovalForAll}."
-				},
-				"supportsInterface(bytes4)": {
-					"details": "See {IERC165-supportsInterface}"
+					"details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the address zero. Emits an {ApprovalForAll} event."
 				},
 				"symbol()": {
-					"details": "See {IERC721Metadata-symbol}."
+					"details": "Returns the token collection symbol."
 				},
 				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
+					"details": "Returns the Uniform Resource Identifier (URI) for `tokenId` token."
 				},
 				"transferFrom(address,address,uint256)": {
-					"details": "See {IERC721-transferFrom}."
+					"details": "Transfers `tokenId` token from `from` to `to`. WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must understand this adds an external call which potentially creates a reentrancy vulnerability. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
 				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
@@ -967,12 +1020,20 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/erc721/MsNftV1Collection.sol": {
-			"keccak256": "0xb1625522ca03ccb7f5e672cf79ae8395872be754b090fef115f21cadcf4c7578",
+		"contracts/erc721/MsERC721.sol": {
+			"keccak256": "0x30d560f9323d53a27b20f8ba05799d50db34838fd351767a6c31d192df0b44ec",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ab16c74602a75d2f1c129ff1963ef54c087d01ac64c1740b7876480d8074ffca",
-				"dweb:/ipfs/Qme4Wj4DnKLLFDN6XRRXqbWQrfVWSTSphpEiwfaCUimsjK"
+				"bzz-raw://450d61e713e3d55848027db873c5394b4c4bec1745665e8b958156e18cb1e66a",
+				"dweb:/ipfs/QmYDhFRDuWHgjdzcda9Mo6QJteE4HwSNnkmJvj4m6Hu4j5"
+			]
+		},
+		"contracts/erc721/MsNftV1Collection.sol": {
+			"keccak256": "0x35b30a9799375adc666b6684e5b13b3cf50b724b4b07af29e859396413987c1e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bd9076016a31e111c2c870bb412318677aaa28fada8e217bd7d056e34827a3cd",
+				"dweb:/ipfs/QmP9LJTYHAY2gWJWahBCvDVtXUVDwKoJUaLSncqwJEXYek"
 			]
 		}
 	},
