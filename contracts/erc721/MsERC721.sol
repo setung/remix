@@ -2,14 +2,14 @@
 
 pragma solidity 0.8.19;
 
-import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import {IERC721Receiver} from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
-import {IERC721Metadata} from "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
-import {Context} from "@openzeppelin/contracts/utils/Context.sol";
-import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
-import {IERC165, ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
-import {IERC721Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
-import {IERC4906} from "@openzeppelin/contracts/interfaces/IERC4906.sol";
+import "../openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "../openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "../openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
+import "../openzeppelin/contracts/utils/Context.sol";
+import "../openzeppelin/contracts/utils/Strings.sol";
+import "../openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "../openzeppelin/contracts/interfaces/draft-IERC6093.sol";
+import "../openzeppelin/contracts/interfaces/IERC4906.sol";
 
 abstract contract MsERC721 is Context, ERC165, IERC721, IERC721Metadata, IERC721Errors, IERC4906 {
     using Strings for uint256;
